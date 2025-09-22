@@ -1,33 +1,75 @@
-# Vendor_performance_project
-# File 1: Importing_data_to_database&DataCleaning.ipynb
+# Vendor Performance Analysis
+This project provides a comprehensive analysis of vendor performance by integrating and cleaning data from multiple sources. It uses statistical methods and data visualization to identify and evaluate key performance indicators, ultimately distinguishing between top-performing and low-performing vendors.
 
-This file focuses on the data preparation steps. The main performance points are:
+# Project Goal
+The primary objective is to analyze vendor performance by:
 
-Data Consolidation: The notebook imports vendor information from various tables, including Purchases, Purchase_Prices, Vendor_Invoice, and Sales, into a single final summary table.
+Consolidating data from various sources (Purchases, Sales, Prices).
 
-Data Cleaning and Transformation:
+Calculating key metrics such as ProfitMargin, stockturnover, and salestopurchaseratio.
 
-It calculates GrossProfit,ProfitMargin, stockturnover, and salestopurchaseratio.
+Using statistical analysis (t-test) and data visualization to find significant differences in performance between different vendor groups.
 
-It also handles data cleaning by replacing inf and -inf values with a large number (1e300) to enable successful database import.
+# Project Files
+This repository contains two main Jupyter Notebooks that guide you through the entire analysis pipeline.
 
-# File 2: analysis.ipynb
+1. Importing_data_to_database&DataCleaning.ipynb
+This notebook handles the initial data engineering and cleaning. The main steps performed are:
 
-This file uses the cleaned data to perform a deeper performance analysis. The key findings are:
+Connecting to a MySQL database to import raw data.
 
-Overall Performance Metrics: The analysis of 10,692 records reveals an average ProfitMargin of approximately -15.6%, which indicates a significant net loss. The median ProfitMargin is 30.4%.
+Merging various vendor-related tables (Purchases, Purchase_Prices, Vendor_Invoice, Sales) into a single, comprehensive DataFrame.
 
-Vendor Performance Analysis:
+Feature engineering to create new columns like ProfitMargin, stockturnover, and salestopurchaseratio.
 
-A statistical t-test was conducted to compare the mean profit margins of top-performing and low-performing vendors.
+Data cleaning, specifically replacing inf and -inf values with a large number (1e300) to ensure data integrity before importing into the database.
 
-The test result shows a t-statistic of -17.64 and a p-value of 0.0000.
+Exporting the final, cleaned DataFrame to a new table in the MySQL database.
 
-Conclusion: Based on the low p-value (less than 0.05), the null hypothesis—that there is no significant difference in the mean profit margins between the two groups—is rejected. This confirms a statistically significant difference in performance between the top and low-performing vendor groups.
+2. analysis.ipynb
+This notebook focuses on the statistical and visual analysis of the cleaned data. The key components include:
 
+Importing the final, cleaned data from the MySQL database.
 
+Calculating summary statistics and overall performance metrics.
 
+Performing a t-test to determine if there is a statistically significant difference in ProfitMargin between top-performing and low-performing vendor groups.
 
+Generating various plots to visualize the data, such as box plots showing the impact of order size on unit price and bar plots to visualize vendor contribution margins.
 
+# Key Findings
+Based on the analysis, a significant performance gap was identified:
 
+The overall average ProfitMargin across all vendors was found to be approximately -15.6%, with a median of 30.4%, indicating a high degree of variability and a net loss for the business.
 
+The t-test yielded a t-statistic of -17.64 and a p-value of 0.0000.
+
+The low p-value confirms that there is a statistically significant difference in the mean profit margins between top-performing and low-performing vendor groups.
+
+# Technologies and Libraries
+Python: The core programming language.
+
+**Pandas**: Used for data manipulation, cleaning, and analysis.
+
+**NumPy**: Used for numerical operations, including handling infinite values.
+
+**Matplotlib & Seaborn**: Used for creating insightful data visualizations.
+
+**SciPy**: Used for performing the statistical t-test.
+
+**SQLAlchemy**: Used to connect to and interact with the MySQL database.
+
+# How to Run the Project
+Clone the Repository: Clone this project to your local machine.
+
+Install Dependencies: Make sure you have Python and Jupyter installed. Then, install the required libraries:
+
+pip install pandas numpy seaborn matplotlib sqlalchemy scipy
+
+Database Setup: Ensure you have a MySQL database set up with the necessary vendor data. Update the connection details in the Importing_data_to_database&DataCleaning.ipynb notebook.
+
+Run Notebooks:
+
+First, run Importing_data_to_database&DataCleaning.ipynb to clean and prepare the data.
+
+Next, run analysis.ipynb to perform the analysis and generate the plots.
