@@ -7,7 +7,7 @@ Data Consolidation: The notebook imports vendor information from various tables,
 
 Data Cleaning and Transformation:
 
-It calculates ProfitMargin, stockturnover, and salestopurchaseratio.
+It calculates GrossProfit,ProfitMargin, stockturnover, and salestopurchaseratio.
 
 It also handles data cleaning by replacing inf and -inf values with a large number (1e300) to enable successful database import.
 
