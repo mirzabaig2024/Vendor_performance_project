@@ -1,5 +1,6 @@
 # Vendor_performance_project
-File 1: Importing_data_to_database&DataCleaning.ipynb
+# File 1: Importing_data_to_database&DataCleaning.ipynb
+
 This file focuses on the data preparation steps. The main performance points are:
 
 Data Consolidation: The notebook imports vendor information from various tables, including Purchases, Purchase_Prices, Vendor_Invoice, and Sales, into a single final summary table.
@@ -10,7 +11,8 @@ It calculates ProfitMargin, stockturnover, and salestopurchaseratio.
 
 It also handles data cleaning by replacing inf and -inf values with a large number (1e300) to enable successful database import.
 
-File 2: analysis.ipynb
+# File 2: analysis.ipynb
+
 This file uses the cleaned data to perform a deeper performance analysis. The key findings are:
 
 Overall Performance Metrics: The analysis of 10,692 records reveals an average ProfitMargin of approximately -15.6%, which indicates a significant net loss. The median ProfitMargin is 30.4%.
